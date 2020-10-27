@@ -109,6 +109,21 @@ tee -a /etc/cron.d/refurb <<EOF
 0 0 * * * ubuntu $CONFIG/tools/db.sh > /var/log/mysql/backup.log 2>&1
 EOF
 
+# Compte SFTP
+
+adduser --home /var/www/ --shell /usr/sbin/nologin --no-create-home --ingroup www-data guillaume
+usermod -a -G sftp guillaume
+
+tee -a /etc/ssh/sshd_config <<EOF
+Match Group sftp
+    ChrootDirectory %h
+    PasswordAuthentication yes
+    X11Forwarding no
+    ForceCommand internal-sftp
+EOF
+
+service ssh restart
+
 
 # Nettoyages
 apt-get -y autoremove
@@ -119,6 +134,7 @@ mkdir /var/www
 mkdir -p /var/lib/caddy/.local/share/caddy
 chown ubuntu:ubuntu /var/www
 chown ubuntu:ubuntu /var/lib/caddy/.local/share/caddy
+
 
 
 IP=`curl -sS ipecho.net/plain`
