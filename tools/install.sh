@@ -9,11 +9,18 @@ CONFIG="/home/ubuntu/config"
 locale-gen "en_US.UTF-8"
 timedatectl set-timezone Europe/Paris
 
+# Préparation de la suite
+
+mkdir -p /var/www
+mkdir -p /var/lib/caddy/.local/share/caddy
+chown ubuntu:ubuntu /var/www
+chown ubuntu:ubuntu /var/lib/caddy/.local/share/caddy
+
 echo "======== Mise à jour initiale ========"
 apt update
 apt -y upgrade
 apt -y dist-upgrade
-apt -y install libcap2-bin jq
+apt -y install libcap2-bin jq unzip
 
 echo "======== Installation de Caddy ========"
 echo "deb [trusted=yes] https://apt.fury.io/caddy/ /" \
@@ -65,7 +72,7 @@ chmod +x wp-cli.phar
 mv wp-cli.phar /usr/local/bin/wp
 
 # Fichier de configuration
-su ubuntu -c 'ln -s $CONFIG/home/.wp-cli ~/'
+su ubuntu -c 'ln -s ~/config/home/.wp-cli ~/'
 
 
 echo "======== Configuration du pare-feu ========"
@@ -82,29 +89,10 @@ mkswap /swapfile
 swapon /swapfile
 echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 
-echo "======== Installation des quelques outils ========"
-echo "zsh et oh-my-zsh (Shell 2.0)"
-apt-get -y install zsh
 
-su ubuntu -c 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended' 
+echo "======== Configuration du compte SFTP ========"
 
-su ubuntu -c 'ln -sf $CONFIG/home/.alias ~/.alias'
-su ubuntu -c 'ln -sf $CONFIG/home/.zshrc ~/.zshrc'
-
-chsh -s $(which zsh) ubuntu
-
-# Installation des crons automatiques
-
-## Création des fichiers de log
-touch /var/log/mysql/backup.log
-chown ubuntu:ubuntu /var/log/mysql/backup.log
-
-### Création du cron
-tee -a /etc/cron.d/refurb <<EOF
-0 0 * * * ubuntu $CONFIG/tools/db.sh > /var/log/mysql/backup.log 2>&1
-EOF
-
-# Compte SFTP
+addgroup sftp
 
 adduser --home /var/www/ --shell /usr/sbin/nologin --no-create-home --ingroup www-data guillaume
 usermod -a -G sftp guillaume
@@ -119,33 +107,34 @@ EOF
 
 service ssh restart
 
+echo "======== Configuration de l'IPv6 ========"
+
+ln -sf $CONFIG/etc/netplan/51-cloud-init-ipv6.yaml /etc/netplan/
+netplan apply
+
+echo "======== Installation des quelques outils ========"
+echo "zsh et oh-my-zsh (Shell 2.0)"
+apt-get -y install zsh
+
+su ubuntu -c 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended' 
+
+su ubuntu -c 'ln -sf ~/config/home/.alias ~/.alias'
+su ubuntu -c 'ln -sf ~/config/home/.zshrc ~/.zshrc'
+
+chsh -s $(which zsh) ubuntu
+
+# Installation des crons automatiques
+
+## Création des fichiers de log
+touch /var/log/mysql/backup.log
+chown ubuntu:ubuntu /var/log/mysql/backup.log
+
+### Création du cron
+tee -a /etc/cron.d/refurb <<EOF
+0 0 * * * ubuntu $CONFIG/tools/db.sh > /var/log/mysql/backup.log 2>&1
+EOF
+
+
 
 # Nettoyages
 apt-get -y autoremove
-
-# Préparation de la suite
-
-mkdir /var/www
-mkdir -p /var/lib/caddy/.local/share/caddy
-chown ubuntu:ubuntu /var/www
-chown ubuntu:ubuntu /var/lib/caddy/.local/share/caddy
-
-
-
-IP=`curl -sS ipecho.net/plain`
-
-echo "\n======== Script d'installation terminé ========\n\n\n"
-
-echo "Ouvrez une nouvelle session avec ce même compte pour bénéficier de tous les changements.\n\n "
-
-echo "Vous pourrez ensuite transférer les données vers ce serveur en utilisant ces commandes depuis le précédent serveur : \n"
-
-echo "rsync -aHAXxv --numeric-ids --delete --progress -e 'ssh -T -o Compression=no -x' /var/www/* root@$IP:/var/www\n"
-
-echo "rsync -aHAXxv --numeric-ids --delete --progress -e 'ssh -T -o Compression=no -x' /var/lib/caddy/.local/share/caddy/* root@$IP:/var/lib/caddy/.local/share/caddy\n"
-
-echo "rsync -aHAXxv --numeric-ids --delete --progress -e 'ssh -T -o Compression=no -x' ~/backup/* root@$IP:~/backup\n"
-
-echo "wp --allow-root db export - > ~/dump.sql\n"
-
-echo "rsync -aHAXxv --numeric-ids --delete --progress -e 'ssh -T -o Compression=no -x' ~/dump.sql root@$IP:~/\n"
