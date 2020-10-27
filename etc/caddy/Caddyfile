@@ -1,0 +1,53 @@
+{
+	email nicolinux@gmail.com
+	experimental_http3
+}
+
+www.covidtracker.fr,
+guillaumerozier.fr {
+	redir https://covidtracker.fr{uri}/
+}
+
+(static) {
+	@static {
+		file
+		path *.ico *.css *.js *.gif *.jpg *.jpeg *.png *.svg *.woff *.woff2 *.json
+	}
+	header @static Cache-Control max-age=5184000
+}
+
+(security) {
+	header {
+		# enable HSTS
+		Strict-Transport-Security max-age=31536000;
+		# disable clients from sniffing the media type
+		X-Content-Type-Options nosniff
+		# keep referrer data off of HTTP connections
+		Referrer-Policy no-referrer-when-downgrade
+	}
+}
+
+
+covidtracker.fr {
+	root * /var/www/covidtracker.fr
+	encode zstd gzip
+	file_server
+	import static
+	import security
+	log {
+		output file /var/log/caddy/covidtracker.fr.access.log
+	}
+
+	@cache {
+		not header_regexp Cookie "comment_author|wordpress_[a-f0-9]+|wp-postpass|wordpress_logged_in"
+		not path_regexp "(/wp-admin/|/xmlrpc.php|/wp-(app|cron|login|register|mail).php|wp-.*.php|/feed/|index.php|wp-comments-popup.php|wp-links-opml.php|wp-locations.php|sitemap(index)?.xml|[a-z0-9-]+-sitemap([0-9]+)?.xml)"
+		not method POST
+		not expression {query} != ''
+    }
+
+    route @cache {
+        try_files /wp-content/cache/cache-enabler/{host}{uri}/https-index.html /wp-content/cache/cache-enabler/{host}{uri}/index.html {path} {path}/index.php?{query}
+    }
+
+    php_fastcgi unix//run/php/php7.4-fpm-caddy.sock
+}
