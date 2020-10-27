@@ -100,7 +100,6 @@ usermod -a -G sftp guillaume
 tee -a /etc/ssh/sshd_config <<EOF
 Match Group sftp
     ChrootDirectory %h
-    PasswordAuthentication yes
     X11Forwarding no
     ForceCommand internal-sftp
 EOF
