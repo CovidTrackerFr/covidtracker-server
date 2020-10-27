@@ -3,8 +3,7 @@
 	experimental_http3
 }
 
-www.covidtracker.fr,
-guillaumerozier.fr {
+www.covidtracker.fr {
 	redir https://covidtracker.fr{uri}/
 }
 
