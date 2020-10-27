@@ -67,11 +67,6 @@ mv wp-cli.phar /usr/local/bin/wp
 # Fichier de configuration
 su ubuntu -c 'ln -s $CONFIG/home/.wp-cli ~/'
 
-echo "======== Installation de Composer ========"
-apt -y install unzip
-cd /tmp
-curl -sS https://getcomposer.org/installer -o composer-setup.php
-php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
 echo "======== Configuration du pare-feu ========"
 ufw allow ssh
