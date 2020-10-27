@@ -24,10 +24,10 @@ echo "Saisir le mot de passe de la db : "
 read passwddb
 
 mysql -u root -p$passwdroot <<EOF
-CREATE DATABASE wordpress DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-CREATE USER 'voiretmanger'@'localhost' IDENTIFIED BY '$passwddb';
-GRANT ALL ON wordpress.* TO 'voiretmanger'@'localhost';
-USE wordpress;
+CREATE DATABASE covid DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+CREATE USER 'covidtracker'@'localhost' IDENTIFIED BY '$passwddb';
+GRANT ALL ON covid.* TO 'covidtracker'@'localhost';
+USE covid;
 SOURCE $HOME/dump.sql;
 FLUSH PRIVILEGES;
 EOF
