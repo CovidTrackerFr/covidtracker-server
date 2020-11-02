@@ -95,7 +95,7 @@ echo "======== Configuration du compte SFTP ========"
 addgroup sftp
 
 adduser --home /var/www/ --shell /usr/sbin/nologin --no-create-home --ingroup www-data guillaume
-usermod -a -G sftp guillaume
+usermod -a -G sftp,caddy guillaume
 
 tee -a /etc/ssh/sshd_config <<EOF
 Match Group sftp
