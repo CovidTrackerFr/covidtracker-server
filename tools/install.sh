@@ -20,7 +20,7 @@ echo "======== Mise à jour initiale ========"
 apt update
 apt -y upgrade
 apt -y dist-upgrade
-apt -y install libcap2-bin jq unzip
+apt -y install libcap2-bin jq unzip mailutils
 
 echo "======== Installation de Caddy ========"
 echo "deb [trusted=yes] https://apt.fury.io/caddy/ /" \
