@@ -26,6 +26,12 @@ www.covidtracker.fr {
 	}
 }
 
+(404) {
+	@missingFile not file {path} {path}.md
+	handle @missingFile {
+		respond * "Not found" 404
+	}
+}
 
 covidtracker.fr {
 	root * /var/www/covidtracker.fr
@@ -60,4 +66,5 @@ files.covidtracker.fr {
 		output file /var/log/caddy/files.covidtracker.fr.access.log
 	}
 	import static
+	import 404
 }
