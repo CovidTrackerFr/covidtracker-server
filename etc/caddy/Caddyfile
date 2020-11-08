@@ -60,5 +60,4 @@ files.covidtracker.fr {
 		output file /var/log/caddy/files.covidtracker.fr.access.log
 	}
 	import static
-	import security
 }
