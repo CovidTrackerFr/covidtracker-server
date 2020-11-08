@@ -50,3 +50,15 @@ covidtracker.fr {
 
     php_fastcgi unix//run/php/php7.4-fpm-caddy.sock
 }
+
+
+files.covidtracker.fr {
+	root * /var/www/files.covidtracker.fr
+	encode zstd gzip
+	file_server browse
+	log {
+		output file /var/log/caddy/files.covidtracker.fr.access.log
+	}
+	import static
+	import security
+}
