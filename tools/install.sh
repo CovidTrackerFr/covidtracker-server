@@ -129,8 +129,8 @@ touch /var/log/mysql/backup.log
 chown ubuntu:ubuntu /var/log/mysql/backup.log
 
 ### Création du cron
-tee -a /etc/cron.d/refurb <<EOF
-0 0 * * * ubuntu $CONFIG/tools/db.sh > /var/log/mysql/backup.log 2>&1
+tee -a /etc/cron.d/backup-db <<EOF
+0 0 * * * root $CONFIG/tools/db.sh > /var/log/mysql/backup.log 2>&1
 EOF
 
 
