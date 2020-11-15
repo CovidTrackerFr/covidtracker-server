@@ -55,7 +55,7 @@ covidtracker.fr {
 	file_server
 	import static
 	import security
-	
+	import 500
 	log {
 		output file /var/log/caddy/covidtracker.fr.access.log
 	}
