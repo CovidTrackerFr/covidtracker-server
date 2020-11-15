@@ -26,7 +26,7 @@ www.covidtracker.fr {
 	}
 }
 
-(errors) {
+(404) {
 	handle_errors {
 		@404 {
 			expression {http.error.status_code} == 404
@@ -34,7 +34,11 @@ www.covidtracker.fr {
 		handle @404 {
 			respond * "Not found" 404
 		}
-		
+	}
+}
+
+(500) {
+	handle_errors {
 		@500 {
 			expression {http.error.status_code}.startsWith("50")
 		}
@@ -50,6 +54,7 @@ covidtracker.fr {
 	file_server
 	import static
 	import security
+	import 500
 	log {
 		output file /var/log/caddy/covidtracker.fr.access.log
 	}
