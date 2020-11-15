@@ -43,8 +43,7 @@ www.covidtracker.fr {
 			expression {http.error.status_code}.startsWith("50")
 		}
 		handle @500 {
-			rewrite * https://files.covidtracker.fr/busy.html
-			file_server
+			redir * https://files.covidtracker.fr/busy.html
 		}
 	}
 }
