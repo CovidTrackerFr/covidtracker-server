@@ -44,6 +44,7 @@ www.covidtracker.fr {
 		}
 		handle @500 {
 			rewrite * /busy.html
+			file_server
 		}
 	}
 }
