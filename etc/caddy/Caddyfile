@@ -93,7 +93,6 @@ dev.covidtracker.fr {
 	log {
 		output file /var/log/caddy/dev.covidtracker.fr.access.log
 	}
-	import static
 	import 404
 	try_files {path}.html {path}
 }
