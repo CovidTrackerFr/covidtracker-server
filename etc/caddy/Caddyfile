@@ -23,6 +23,8 @@ www.covidtracker.fr {
 		X-Content-Type-Options nosniff
 		# keep referrer data off of HTTP connections
 		Referrer-Policy no-referrer-when-downgrade
+		# Blocage des iframe
+		X-Frame-Options deny
 	}
 }
 
