@@ -39,6 +39,13 @@
 	}
 }
 
+(logs) {
+    log {
+        output file /var/log/caddy/{args.0}.log
+    }
+}
+
+
 (500) {
 	handle_errors {
 		@500 {
@@ -64,9 +71,7 @@ covidtracker.fr {
 	import static
 	import security
 	import 500
-	log {
-		output file /var/log/caddy/covidtracker.fr.access.log
-	}
+	import logs covidtracker.fr
 
 	@cache {
 		not header_regexp Cookie "comment_author|wordpress_[a-f0-9]+|wp-postpass|wordpress_logged_in"
@@ -88,9 +93,7 @@ files.covidtracker.fr {
 	root * /var/www/files.covidtracker.fr
 	encode zstd gzip
 	file_server browse
-	log {
-		output file /var/log/caddy/files.covidtracker.fr.access.log
-	}
+	import logs files.covidtracker.fr
 	import static
 	import 404
 }
@@ -101,9 +104,7 @@ dev.covidtracker.fr {
 	root * /var/www/dev.covidtracker.fr
 	encode zstd gzip
 	file_server browse
-	log {
-		output file /var/log/caddy/dev.covidtracker.fr.access.log
-	}
+	import logs dev.covidtracker.fr
 	import 404
 	try_files {path}.html {path}
 }
