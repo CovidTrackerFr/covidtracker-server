@@ -126,3 +126,7 @@ www.covidexplorer.fr,
 covidexplorer.fr {
 	redir https://covidtracker.fr/covidexplorer/
 }
+
+dep.covidtracker.fr {
+    redir https://covidtracker.fr/dashboard-departements/?dep={uri}
+}
