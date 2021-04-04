@@ -1,6 +1,10 @@
 {
 	email guillaume.rozier73@gmail.com
-	experimental_http3
+	servers {
+		protocol {
+			experimental_http3
+		}
+	}
 }
 
 www.covidtracker.fr {
