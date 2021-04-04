@@ -7,10 +7,6 @@
 	}
 }
 
-www.covidtracker.fr {
-	redir https://covidtracker.fr{uri}
-}
-
 (static) {
 	@static {
 		file
@@ -55,6 +51,14 @@ www.covidtracker.fr {
 	}
 }
 
+# Site principal
+
+covidexplorer.fr,
+www.covidexplorer.fr,
+www.covidtracker.fr {
+	redir https://covidtracker.fr{uri}
+}
+
 covidtracker.fr {
 	root * /var/www/covidtracker.fr
 	encode zstd gzip
@@ -80,6 +84,8 @@ covidtracker.fr {
     php_fastcgi unix//run/php/php7.4-fpm-caddy.sock
 }
 
+# Fichiers statiques
+
 files.covidtracker.fr {
 	root * /var/www/files.covidtracker.fr
 	encode zstd gzip
@@ -91,6 +97,7 @@ files.covidtracker.fr {
 	import 404
 }
 
+# Site statique en développement
 
 dev.covidtracker.fr {
 	root * /var/www/dev.covidtracker.fr
@@ -101,4 +108,16 @@ dev.covidtracker.fr {
 	}
 	import 404
 	try_files {path}.html {path}
+}
+
+# Domaines annexes
+
+www.vitemadosedevaccin.fr,
+vitemadosedevaccin.fr {
+	redir https://covidtracker.fr/vitemadose/
+}
+
+www.vaccinplanner.fr,
+vaccinplanner.fr {
+	redir https://covidtracker.fr/vaccinplanner/
 }
