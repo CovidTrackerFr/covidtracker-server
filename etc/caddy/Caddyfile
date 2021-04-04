@@ -53,8 +53,6 @@
 
 # Site principal
 
-covidexplorer.fr,
-www.covidexplorer.fr,
 www.covidtracker.fr {
 	redir https://covidtracker.fr{uri}
 }
@@ -112,6 +110,7 @@ dev.covidtracker.fr {
 
 # Domaines annexes
 
+vmd.covidtracker.fr,
 www.vitemadosedevaccin.fr,
 vitemadosedevaccin.fr {
 	redir https://covidtracker.fr/vitemadose/
@@ -120,4 +119,9 @@ vitemadosedevaccin.fr {
 www.vaccinplanner.fr,
 vaccinplanner.fr {
 	redir https://covidtracker.fr/vaccinplanner/
+}
+
+www.covidexplorer.fr,
+covidexplorer.fr {
+	redir https://covidtracker.fr/covidexplorer/
 }
