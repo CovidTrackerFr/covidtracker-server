@@ -60,6 +60,8 @@
 
 # Site principal
 
+guillaumerozier.fr,
+www.guillaumerozier.fr,
 www.covidtracker.fr {
 	redir https://covidtracker.fr{uri}
 }
