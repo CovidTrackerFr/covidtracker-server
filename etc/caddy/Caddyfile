@@ -100,6 +100,24 @@ files.covidtracker.fr {
 	import 404
 }
 
+# Vite ma dose
+
+vmd.covidtracker.fr,
+www.vitemado.se,
+www.vitemadosedevaccin.fr,
+vitemadosedevaccin.fr {
+	redir https://covidtracker.fr/vitemadose/
+}
+
+vitemado.se {
+	root * /var/www/vitemado.se
+	encode zstd gzip
+	file_server browse
+	import logs vitemado.se
+	import 404
+	try_files {path}.html {path}
+}
+
 # Site statique en développement
 
 dev.covidtracker.fr {
@@ -112,12 +130,6 @@ dev.covidtracker.fr {
 }
 
 # Domaines annexes
-
-vmd.covidtracker.fr,
-www.vitemadosedevaccin.fr,
-vitemadosedevaccin.fr {
-	redir https://covidtracker.fr/vitemadose/
-}
 
 www.vaccinplanner.fr,
 vaccinplanner.fr {
