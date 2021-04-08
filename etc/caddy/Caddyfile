@@ -104,6 +104,14 @@ files.covidtracker.fr {
 
 vmd.covidtracker.fr,
 www.vitemado.se,
+vitemadose.app,
+www.vitemadose.app,
+vitemadose.org,
+www.vitemadose.org,
+vitemadose.net,
+www.vitemadose.net,
+vite-ma-dose.fr,
+www.vite-ma-dose.fr,
 www.vitemadosedevaccin.fr,
 vitemadosedevaccin.fr {
 	redir https://covidtracker.fr/vitemadose/
