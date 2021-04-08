@@ -123,7 +123,7 @@ vitemado.se {
 	file_server browse
 	import logs vitemado.se
 	import 404
-	try_files {path}.html {path}
+	try_files {path} {path}/ /index.html
 }
 
 # Site statique en développement
