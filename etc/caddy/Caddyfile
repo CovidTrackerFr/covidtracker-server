@@ -103,6 +103,7 @@ files.covidtracker.fr {
 # Vite ma dose
 
 vmd.covidtracker.fr,
+vitemado.se,
 www.vitemado.se,
 vitemadose.app,
 www.vitemadose.app,
@@ -117,11 +118,11 @@ vitemadosedevaccin.fr {
 	redir https://covidtracker.fr/vitemadose/
 }
 
-vitemado.se {
-	root * /var/www/vitemado.se
+vitemadose.covidtracker.fr {
+	root * /var/www/vitemadose.covidtracker.fr
 	encode zstd gzip
 	file_server browse
-	import logs vitemado.se
+	import logs vitemadose.covidtracker.fr
 	import 404
 	try_files {path} {path}/ /index.html
 }
