@@ -75,7 +75,7 @@ covidtracker.fr {
 	import 500
 	import logs covidtracker.fr
 
-	redir /vitemadoses/ https://vitemadose.covidtracker.fr
+	redir /vitemadose/ https://vitemadose.covidtracker.fr
 
 	@cache {
 		not header_regexp Cookie "comment_author|wordpress_[a-f0-9]+|wp-postpass|wordpress_logged_in"
