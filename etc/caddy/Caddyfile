@@ -67,6 +67,8 @@ www.covidtracker.fr {
 }
 
 covidtracker.fr {
+	redir /vitemadose/ https://vitemadose.covidtracker.fr
+	
 	root * /var/www/covidtracker.fr
 	encode zstd gzip
 	file_server
@@ -74,8 +76,6 @@ covidtracker.fr {
 	import security
 	import 500
 	import logs covidtracker.fr
-
-	redir /vitemadose/ https://vitemadose.covidtracker.fr
 
 	@cache {
 		not header_regexp Cookie "comment_author|wordpress_[a-f0-9]+|wp-postpass|wordpress_logged_in"
