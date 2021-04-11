@@ -1,6 +1,6 @@
-# Configuration serveur Covid Tracker
+# Configuration serveur dédié à CovidTracker
 
-Ce dépôt contient la configuration du serveur pour [le site Covid Tracker](https://covidtracker.fr).
+Ce dépôt contient la configuration du serveur pour [le site CovidTracker](https://covidtracker.fr).
 
 ## Que fait le script d'installation ?
 
