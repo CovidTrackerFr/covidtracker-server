@@ -126,6 +126,7 @@ vitemadose.covidtracker.fr {
 	file_server browse
 	import logs vitemadose.covidtracker.fr
 	import 404
+	import security
 	try_files {path} {path}/ /index.html
 }
 
@@ -137,6 +138,7 @@ dev.covidtracker.fr {
 	file_server browse
 	import logs dev.covidtracker.fr
 	import 404
+	import security
 	try_files {path}.html {path}
 }
 
