@@ -10,9 +10,9 @@
 (static) {
 	@static {
 		file
-		path *.ico *.css *.js *.gif *.jpg *.jpeg *.png *.svg *.woff *.woff2 *.json
+		path *.ico *.css *.js *.gif *.jpg *.jpeg *.png *.svg *.woff *.woff2 *.json *.pdf
 	}
-	header @static Cache-Control max-age=5184000
+	header @static Cache-Control max-age=900
 }
 
 (security) {
