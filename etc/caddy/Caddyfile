@@ -127,6 +127,7 @@ vitemadose.covidtracker.fr {
 	import logs vitemadose.covidtracker.fr
 	import 404
 	import security
+	header Access-Control-Allow-Origin https://vitemadose.covidtracker.fr
 	try_files {path} {path}/ /index.html
 }
 
