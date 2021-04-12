@@ -131,6 +131,15 @@ vitemadose.covidtracker.fr {
 	try_files {path} {path}/ /index.html
 }
 
+dev.vitemado.se {
+	root * /var/www/dev.vitemado.se
+	encode zstd gzip
+	file_server browse
+	import 404
+	import security
+	header Access-Control-Allow-Origin https://vitemadose.covidtracker.fr
+	try_files {path} {path}/ /index.html
+}
 # Site statique en développement
 
 dev.covidtracker.fr {
