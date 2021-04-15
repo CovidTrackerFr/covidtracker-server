@@ -121,10 +121,10 @@ vitemadosedevaccin.fr {
 }
 
 vitemadose.covidtracker.fr {
-	@atest {
-		path_regexp test ^(\/.*\/)age-plus75ans\/$
+	@age_matcher {
+		path_regexp age ^(\/.*\/)age-plus75ans\/$
 	}
-	redir @atest {http.regexp.test.1} 301
+	redir @age_matcher {http.regexp.age.1} 301
 
 	root * /var/www/vitemadose.covidtracker.fr
 	encode zstd gzip
