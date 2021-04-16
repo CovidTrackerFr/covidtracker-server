@@ -135,7 +135,7 @@ dev.vitemado.se {
 	@age_matcher {
 		path_regexp age ^(\/.*\/)age-plus75ans\/$
 	}
-	redir @age_matcher {http.regexp.age.1} 301
+	redir @age_matcher {http.regexp.age.1}
 
  	root * /var/www/dev.vitemado.se
  	encode zstd gzip
