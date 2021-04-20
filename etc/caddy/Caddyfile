@@ -12,7 +12,7 @@
 		file
 		path *.ico *.css *.js *.gif *.jpg *.jpeg *.png *.svg *.woff *.woff2 *.json *.pdf
 	}
-	header @static Cache-Control max-age=900
+	header @static Cache-Control max-age={args.0}
 }
 
 (security) {
@@ -72,7 +72,7 @@ covidtracker.fr {
 	root * /var/www/covidtracker.fr
 	encode zstd gzip
 	file_server
-	import static
+	import static 900
 	import security
 	import 500
 	import logs covidtracker.fr
@@ -98,7 +98,7 @@ files.covidtracker.fr {
 	encode zstd gzip
 	file_server browse
 	import logs files.covidtracker.fr
-	import static
+	import static 900
 	import 404
 }
 
@@ -126,6 +126,7 @@ vitemadose.covidtracker.fr {
 	file_server browse
 	import logs vitemadose.covidtracker.fr
 	import 404
+	import static 900
 	import security
 	header Access-Control-Allow-Origin https://vitemadose.covidtracker.fr
 	try_files {path} {path}/ /index.html
@@ -136,6 +137,7 @@ dev.vitemado.se {
  	encode zstd gzip
  	file_server browse
  	import 404
+	import static 0
  	import security
  	header Access-Control-Allow-Origin https://vitemadose.covidtracker.fr
  	try_files {path} {path}/ /index.html
@@ -152,6 +154,7 @@ dev.covidtracker.fr {
 	import logs dev.covidtracker.fr
 	import 404
 	import security
+	import static 0
 	try_files {path}.html {path}
 }
 
