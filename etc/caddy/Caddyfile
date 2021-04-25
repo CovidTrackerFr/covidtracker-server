@@ -140,7 +140,8 @@ dev.vitemado.se {
 	import static 0
  	import security
  	header Access-Control-Allow-Origin https://vitemadose.covidtracker.fr
- 	try_files {path} {path}/ /index.html
+	@subdirs path_regexp subdir_regex ^/([^/]+)/(.*)$
+ 	try_files @subdirs /{re.path_regexp.1}/index.html {path} {path}/ /index.html
  }
 
 
