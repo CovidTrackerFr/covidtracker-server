@@ -144,8 +144,8 @@ dev.vitemado.se {
  	root * /var/www/dev.vitemado.se
  	encode zstd gzip
  	file_server browse
- 	import 404
-	import static 0
+    header Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+	import 404
  	import security
  	header Access-Control-Allow-Origin https://vitemadose.covidtracker.fr
  	try_files {path} {path}/ /index.html
