@@ -124,6 +124,14 @@ vitemadose.covidtracker.fr {
 	root * /var/www/vitemadose.covidtracker.fr
 	encode zstd gzip
 	file_server browse
+	
+	# Pas de cache navigateur sur le fichier index.html
+	@index {
+        file
+        path /index.html
+    }
+    header @index Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+
 	import logs vitemadose.covidtracker.fr
 	import 404
 	import static 900
