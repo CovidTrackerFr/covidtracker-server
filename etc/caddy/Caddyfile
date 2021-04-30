@@ -128,7 +128,7 @@ vitemadose.covidtracker.fr {
 	# Pas de cache navigateur sur le fichier index.html
 	@index {
         file
-        path /index.html
+        path /*.html
     }
     header @index Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
 
