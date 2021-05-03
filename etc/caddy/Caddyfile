@@ -35,6 +35,7 @@
 		}
 		handle @404 {
 			rewrite * /404.html
+			respond "{http.error.status_code} {http.error.status_text}" {http.error.status_code}
 			file_server
 		}
 	}
