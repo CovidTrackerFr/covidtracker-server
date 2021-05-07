@@ -154,7 +154,7 @@ dev.vitemado.se {
  }
 
 chronodose.fr {
-	reverse_proxy https://files.covidtracker.fr/vitemadose.png
+	redir * https://files.covidtracker.fr/vitemadose.png
 	import logs vitemadose.covidtracker.fr
 }
 
