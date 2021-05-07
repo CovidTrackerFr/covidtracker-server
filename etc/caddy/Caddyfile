@@ -154,7 +154,7 @@ dev.vitemado.se {
  }
 
 chronodose.fr {
-	redir https://vitemadose.covidtracker.fr
+	redir https://vitemadose.covidtracker.fr/chronodose
 }
 
 # Site statique en développement
