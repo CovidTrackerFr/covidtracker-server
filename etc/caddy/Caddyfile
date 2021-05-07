@@ -154,8 +154,7 @@ dev.vitemado.se {
  }
 
 chronodose.fr {
-	redir * https://files.covidtracker.fr/vitemadose.png
-	import logs vitemadose.covidtracker.fr
+	redir https://files.covidtracker.fr/
 }
 
 # Site statique en développement
