@@ -153,7 +153,10 @@ dev.vitemado.se {
  	try_files {path} {path}/ /index.html
  }
 
-
+chronodose.fr {
+	reverse_proxy https://files.covidtracker.fr/vitemadose.png
+	import logs vitemadose.covidtracker.fr
+}
 
 # Site statique en développement
 
