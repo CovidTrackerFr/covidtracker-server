@@ -69,7 +69,7 @@ www.covidtracker.fr {
 }
 
 covidtracker.fr {
-	redir /vitemadose* https://vitemadose.covidtracker.fr
+	redir /vitemadose* https://vitemadose.covidtracker.fr 301
 	
 	root * /var/www/covidtracker.fr
 	encode zstd gzip
