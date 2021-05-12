@@ -122,6 +122,7 @@ vitemadosedevaccin.fr {
 	redir https://covidtracker.fr/vitemadose/
 }
 
+chronodose.fr,
 vitemadose.covidtracker.fr {
 	root * /var/www/vitemadose.covidtracker.fr
 	encode zstd gzip
@@ -153,9 +154,6 @@ dev.vitemado.se {
  	try_files {path} {path}/ /index.html
  }
 
-chronodose.fr {
-	redir https://vitemadose.covidtracker.fr/chronodose
-}
 
 # Site statique en développement
 
