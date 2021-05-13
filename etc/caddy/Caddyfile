@@ -149,6 +149,11 @@ vitemadose.covidtracker.fr {
 }
 
 dev.vitemado.se {
+	@age_matcher {
+		path_regexp age ^(\/.*\/)age-plus75ans\/$
+	}
+	redir @age_matcher {http.regexp.age.1}
+
  	root * /var/www/dev.vitemado.se
  	encode zstd gzip
  	file_server browse
