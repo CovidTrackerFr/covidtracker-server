@@ -119,7 +119,7 @@ vite-ma-dose.fr,
 www.vite-ma-dose.fr,
 www.vitemadosedevaccin.fr,
 vitemadosedevaccin.fr {
-	redir https://covidtracker.fr/vitemadose/
+	redir https://vitemadose.covidtracker.fr
 }
 
 chronodose.fr,
