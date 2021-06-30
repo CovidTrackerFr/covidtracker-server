@@ -196,7 +196,7 @@ dep.covidtracker.fr {
 
 # Eurovaccination
 eurovaccination.fr {
-	root * /var/www/eurovaccination.fr
+	root * /var/www/eurovaccination.fr/web
 	encode zstd gzip
 	file_server
 	import logs eurovaccination.fr
