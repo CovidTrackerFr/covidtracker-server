@@ -193,3 +193,16 @@ covidexplorer.fr {
 dep.covidtracker.fr {
     redir https://covidtracker.fr/dashboard-departements/?dep={uri}
 }
+
+# Eurovaccination
+eurovaccination.fr {
+	root * /var/www/eurovaccination.fr
+	encode zstd gzip
+	file_server
+	import logs eurovaccination.fr
+	import 404
+	import security
+	import static 900
+	try_files {path}.html {path}
+}
+
