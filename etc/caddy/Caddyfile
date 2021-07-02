@@ -121,6 +121,7 @@ vite-ma-dose.fr,
 www.vite-ma-dose.fr,
 www.vitemadosedevaccin.fr,
 vitemadosedevaccin.fr {
+	import security
 	redir https://vitemadose.covidtracker.fr
 }
 
