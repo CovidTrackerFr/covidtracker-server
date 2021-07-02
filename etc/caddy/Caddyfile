@@ -65,6 +65,7 @@
 guillaumerozier.fr,
 www.guillaumerozier.fr,
 www.covidtracker.fr {
+	import security
 	redir https://covidtracker.fr{uri}
 }
 
@@ -102,6 +103,7 @@ files.covidtracker.fr {
 	import logs files.covidtracker.fr
 	import static 900
 	import 404
+	import security
 }
 
 # Vite ma dose
