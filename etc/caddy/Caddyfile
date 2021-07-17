@@ -198,7 +198,7 @@ dep.covidtracker.fr {
 }
 
 data.covidtracker.fr {
-    redir https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/main{uri}
+    redir https://raw.githubusercontent.com/rozierguillaume/covid-19/master{uri}
 }
 
 # Eurovaccination
