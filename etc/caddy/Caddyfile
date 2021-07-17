@@ -197,6 +197,10 @@ dep.covidtracker.fr {
     redir https://covidtracker.fr/dashboard-departements/?dep={uri}
 }
 
+data.covidtracker.fr {
+    redir https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/main{uri}
+}
+
 # Eurovaccination
 eurovaccination.fr {
 	root * /var/www/eurovaccination.fr/web
