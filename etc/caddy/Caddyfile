@@ -188,6 +188,16 @@ vaccinplanner.fr {
 	redir https://covidtracker.fr/vaccinplanner/
 }
 
+www.vaximpact.fr,
+vaximpact.fr {
+	redir https://covidtracker.fr/vaximpact/
+}
+
+www.vaximpact.com,
+vaximpact.fr {
+	redir https://covidtracker.fr/vaximpact/
+}
+
 www.covidexplorer.fr,
 covidexplorer.fr {
 	redir https://covidtracker.fr/covidexplorer/
