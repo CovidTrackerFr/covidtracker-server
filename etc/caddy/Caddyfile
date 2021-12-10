@@ -167,6 +167,15 @@ dev.vitemado.se {
  	try_files {path} {path}/ /index.html
  }
 
+api.vitemado.se {
+	root * /var/www/api.vitemado.se
+	import logs api.vitemado.se
+	import security
+	encode zstd gzip
+	file_server browse
+	php_fastcgi unix//run/php/php7.4-fpm-caddy.sock
+}
+
 
 # Site statique en développement
 
