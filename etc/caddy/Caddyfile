@@ -172,7 +172,7 @@ api.vitemado.se {
 	import logs api.vitemado.se
 	import security
 	encode zstd gzip
-	file_server browse
+	file_server
 	php_fastcgi unix//run/php/php7.4-fpm-caddy.sock
 }
 
