@@ -1,11 +1,7 @@
 {
 	email guillaume.rozier73@gmail.com
-	servers {
-		protocol {
-			experimental_http3
-		}
-	}
 }
+
 
 (static) {
 	@static {
