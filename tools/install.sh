@@ -42,16 +42,16 @@ su ubuntu -c 'mkdir ~/backup'
 mkdir -p /var/log/caddy
 chown -R caddy:caddy /var/log/caddy
 
-echo "======== Installation de PHP 7.4 ========"
+echo "======== Installation de PHP 8.2 ========"
 add-apt-repository -y ppa:ondrej/php
 apt update
-apt -y install php7.4 php7.4-{bcmath,cli,curl,fpm,gd,imagick,json,mbstring,mysql,xml,xmlrpc,zip} imagemagick
+apt -y install php8.2 php8.2-{bcmath,cli,curl,fpm,gd,mbstring,mysql,xml,zip} imagemagick
 
 # Fichier de configuration
-ln -sf $CONFIG/etc/php/conf.d/*.ini /etc/php/7.4/fpm/conf.d
-ln -sf $CONFIG/etc/php/pool.d/*.conf /etc/php/7.4/fpm/pool.d
+ln -sf $CONFIG/etc/php/conf.d/*.ini /etc/php/8.2/fpm/conf.d
+ln -sf $CONFIG/etc/php/pool.d/*.conf /etc/php/8.2/fpm/pool.d
 
-systemctl restart php7.4-fpm
+systemctl restart php8.2-fpm
 
 usermod -a -G www-data ubuntu
 
