@@ -20,3 +20,6 @@ chown -R ubuntu:ubuntu /home/ubuntu/backup/
 
 # Nettoyage des anciennes sauvegardes (5 derniers jours)
 find /home/ubuntu/backup/ -maxdepth 1 -type f -mmin +7200 | xargs rm -rf
+
+# Redémarrage quotidien de PHP-FPM
+systemctl restart php8.2-fpm
